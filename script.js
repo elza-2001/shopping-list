@@ -12,23 +12,23 @@ const sendInput = document.querySelector('#input');
 const itemsContainer = document.querySelector('#items');
 
 sendInput.addEventListener('keydown', function(event) {
-    const inputText = sendInput.value;
-
-    const newItem = document.createElement('div');
-    newItem.classList.add('items');
-
     if (event.key == 'Enter') {
+        const inputText = sendInput.value;
+        
+        const newItem = document.createElement('div');
+        newItem.classList.add('items');
+
         newItem.textContent = inputText;
-        input.value = '';
+        sendInput.value = '';
+        
+        if (inputText != '') {
+            itemsContainer.append(newItem);
+        }
+
+        newItem.addEventListener('click', function (){
+            newItem.classList.toggle('done');
+        });
     };
-
-    if (inputText != '') {
-        itemsContainer.append(newItem);
-    }
-
-    newItem.addEventListener('click', function (){
-        newItem.classList.toggle('done');
-    });
 });
 
 
